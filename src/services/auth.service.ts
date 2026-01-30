@@ -1,11 +1,11 @@
 import { AppDataSource } from '../config/database';
 import { User, type SafeUser } from '../entities/user.entity';
 import argon2 from 'argon2';
-import jwt from 'jsonwebtoken';
+import jwt, { SignOptions } from 'jsonwebtoken';
 import { ConflictError, UnauthorizedError } from '../utils/errors';
 
 // Recommended: define once at module level
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = process.env.JWT_SECRET as string;
 
 if (!JWT_SECRET) {
   throw new Error('JWT_SECRET is not defined in environment variables');
@@ -59,7 +59,7 @@ export class AuthService {
     const token = jwt.sign(
       { id: user.id, email: user.email },
       JWT_SECRET,                                     // TS infers string
-      { expiresIn: process.env.JWT_EXPIRES_IN || '1h' }
+      { expiresIn: process.env.JWT_EXPIRES_IN ?? '1h' } as SignOptions
     );
 
     const { passwordHash: _, ...safeUser } = user;
