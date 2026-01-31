@@ -7,7 +7,8 @@ const app = express();
 
 app.use(cors({
   origin: [
-    'http://localhost:3000',          // development frontend
+    'http://localhost:3000',   
+    'https://rm-router-meter.vercel.app/'       // development frontend
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
