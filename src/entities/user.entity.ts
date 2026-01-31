@@ -1,5 +1,5 @@
 // src/entities/user.entity.ts
-
+import 'reflect-metadata';
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm';
 import { IsEmail } from 'class-validator';
 
