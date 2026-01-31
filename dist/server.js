@@ -1,6 +1,7 @@
 import app from './app.js';
 import { AppDataSource } from './config/database.js';
 import { RDSDataSource } from './config/rdsDataSource.js';
+import 'reflect-metadata';
 const PORT = process.env.PORT || 4000;
 async function start() {
     try {
