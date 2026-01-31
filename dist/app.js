@@ -1,8 +1,8 @@
+import 'reflect-metadata';
 import express from 'express';
 import cors from 'cors';
 import authRoutes from './routes/auth.routes.js';
 import routerEventRoutes from "./routes/routerEvents.routes.js";
-import 'reflect-metadata';
 const app = express();
 app.use(cors({
     origin: [
