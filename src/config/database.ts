@@ -1,5 +1,4 @@
 // src/config/database.ts
-import 'reflect-metadata'; // ← very important for decorators to work
 import { DataSource } from 'typeorm';
 import dotenv from 'dotenv';
 import path from 'path';
