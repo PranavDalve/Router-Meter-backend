@@ -1,6 +1,6 @@
-import app from './app';
-import { AppDataSource } from './config/database';
-import { RDSDataSource } from './config/rdsDataSource';
+import app from './app.js';
+import { AppDataSource } from './config/database.js';
+import { RDSDataSource } from './config/rdsDataSource.js';
 
 const PORT = process.env.PORT || 4000;
 

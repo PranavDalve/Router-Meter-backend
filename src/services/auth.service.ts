@@ -1,8 +1,8 @@
-import { AppDataSource } from '../config/database';
-import { User, type SafeUser } from '../entities/user.entity';
+import { AppDataSource } from '../config/database.js';
+import { User, type SafeUser } from '../entities/user.entity.js';
 import argon2 from 'argon2';
 import jwt, { SignOptions } from 'jsonwebtoken';
-import { ConflictError, UnauthorizedError } from '../utils/errors';
+import { ConflictError, UnauthorizedError } from '../utils/errors.js';
 
 // Recommended: define once at module level
 const JWT_SECRET = process.env.JWT_SECRET as string;

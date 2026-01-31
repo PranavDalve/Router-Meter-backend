@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { AuthService } from '../services/auth.service';
-import { ConflictError, UnauthorizedError } from '../utils/errors';
+import { AuthService } from '../services/auth.service.js';
+import { ConflictError, UnauthorizedError } from '../utils/errors.js';
 
 const authService = new AuthService();
 

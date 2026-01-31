@@ -1,9 +1,13 @@
-// src/config/rdsDataSource.ts
+import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import dotenv from 'dotenv';
-import { RouterEvent } from '../entities/RouterEvent';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export const RDSDataSource = new DataSource({
   type: 'postgres',
@@ -14,6 +18,6 @@ export const RDSDataSource = new DataSource({
   database: process.env.RDS_DB,
   synchronize: false,
   logging: process.env.NODE_ENV !== 'production',
-  entities: [RouterEvent], // ✅ explicitly add the entity
+  entities: [path.join(__dirname, '../entities/*.js')],
   ssl: { rejectUnauthorized: false },
 });

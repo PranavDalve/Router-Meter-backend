@@ -1,1 +1,3 @@
-module.exports = require('./src/config/database').AppDataSource.options;
+import { AppDataSource } from './src/config/database';
+
+export const dataSourceOptions = AppDataSource.options;

@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { RDSDataSource } from '../config/rdsDataSource';
-import { RouterEvent } from '../entities/RouterEvent';
+import { RDSDataSource } from '../config/rdsDataSource.js';
+import { RouterEvent } from '../entities/RouterEvent.js';
 
 const router = Router();
 
