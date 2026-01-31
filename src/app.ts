@@ -14,7 +14,7 @@ app.use(cors({
     'http://localhost:5173',            // Vite default
     'http://localhost:4200',            // Angular default (optional)
     'http://127.0.0.1:5173',            // sometimes needed in dev
-    'https://rm-router-meter.vercel.app', // your main Vercel domain
+    'https://router-meter.vercel.app/', // your main Vercel domain
     // Add preview branches if needed (wildcard is less secure but useful for testing):
     // 'https://*.vercel.app',
   ],
