@@ -3,22 +3,37 @@ import cors from 'cors';
 import authRoutes from './routes/auth.routes.js';
 import routerEventRoutes from "./routes/routerEvents.routes.js";
 const app = express();
+// ──────────────────────────────────────────────
+//          CORS Configuration
+// ──────────────────────────────────────────────
 app.use(cors({
     origin: [
         'http://localhost:3000',
-        'https://rm-router-meter.vercel.app/' // development frontend
+        'http://localhost:3001', // React default
+        'http://localhost:5173', // Vite default
+        'http://localhost:4200', // Angular default (optional)
+        'http://127.0.0.1:5173', // sometimes needed in dev
+        'https://router-meter.vercel.app/', // your main Vercel domain
+        // Add preview branches if needed (wildcard is less secure but useful for testing):
+        // 'https://*.vercel.app',
     ],
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true, // important if you use cookies later
+    credentials: true, // required for cookies, auth headers, sessions
+    preflightContinue: false,
+    optionsSuccessStatus: 204, // modern browsers expect 204 for OPTIONS
 }));
+// Parse JSON bodies
 app.use(express.json());
+// Routes
 app.use('/api/auth', authRoutes);
-app.use("/api", routerEventRoutes);
-// Example protected route
+app.use('/api', routerEventRoutes);
+// Optional protected route example
 app.get('/api/protected', (req, res) => {
     res.json({ message: 'Protected content' });
 });
-// 404
-app.use((_req, res) => res.status(404).json({ error: 'Not found' }));
+// Catch-all 404 handler
+app.use((_req, res) => {
+    res.status(404).json({ error: 'Not found' });
+});
 export default app;

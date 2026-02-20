@@ -2,15 +2,18 @@ import express from 'express';
 import cors from 'cors';
 import authRoutes from './routes/auth.routes.js';
 import routerEventRoutes from "./routes/routerEvents.routes.js";
+import cookieParser from 'cookie-parser'; 
 
 const app = express();
+app.use(cookieParser());
 
 // ──────────────────────────────────────────────
 //          CORS Configuration
 // ──────────────────────────────────────────────
 app.use(cors({
   origin: [
-    'http://localhost:3000',            // React default
+    'http://localhost:3000',
+    'http://localhost:3001',            // React default
     'http://localhost:5173',            // Vite default
     'http://localhost:4200',            // Angular default (optional)
     'http://127.0.0.1:5173',            // sometimes needed in dev
